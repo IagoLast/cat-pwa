@@ -22,6 +22,7 @@
   margin: 8px;
   border-radius: 2px;
   cursor: pointer;
+  transition: all .3s;
 }
 
 .pic__img {
@@ -49,6 +50,25 @@
 .pic:hover .pic__caption {
   opacity: 1;
   top: 0;
+}
+
+.pic.active {
+  position: fixed;
+  background: white;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  padding: 50px;
+  margin: auto;
+}
+
+.pic.active .pic__caption {
+  opacity: 1;
+  top: 50%;
 }
 
 

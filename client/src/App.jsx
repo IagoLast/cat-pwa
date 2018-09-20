@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <section className="gallery">
-        {this.state.pictures.map(this.renderPicture)}
+        {this.state.pictures.map(this.renderPicture.bind(this))}
         {this.state.fetching ? 'Loading...' : ''}
       </section>
     );
@@ -48,10 +48,17 @@ class App extends Component {
 
 
   renderPicture(data, index) {
-    return <figure key={index} className="pic">
+    return <figure onClick={() => this.onImageClick(index)} key={index} className={this.state.active === index ? 'pic active' : 'pic'} >
       <img className="pic__img" src={data.url_s} alt={data.title} title={data.title} />
       <figcaption className="pic__caption">{data.title} by {data.ownername}</figcaption>
     </figure>
+  }
+
+  onImageClick(index) {
+    if (this.state.active === index) {
+      return this.setState({ active: -1 });
+    }
+    return this.setState({ active: index });
   }
 }
 
