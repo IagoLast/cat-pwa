@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { timingSafeEqual } from 'crypto';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { pictures: 'Loading...' };
+    this.state = { pictures: [] };
   }
 
   componentWillMount() {
@@ -16,10 +17,15 @@ class App extends Component {
 
   render() {
     return (
-      <pre>
-        {JSON.stringify(this.state.pictures, '\t')}
-      </pre>
+      <React.Fragment>
+        {this.state.pictures.map(this.renderPicture)}
+      </React.Fragment>
     );
+  }
+
+
+  renderPicture(data) {
+    return <img src={data.url_l} alt={data.title} title={data.title} />
   }
 }
 
