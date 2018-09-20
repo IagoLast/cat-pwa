@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
+
 const flickr = require('./lib/flickr/index');
 
-var app = express();
+const app = express();
+app.use(cors());
 app.use(express.static(__dirname + '/public'));
-
 
 
 app.get('/api/v1/pics', async (req, res) => {
