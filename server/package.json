@@ -1,0 +1,23 @@
+{
+  "name": "cat-pwa-server",
+  "version": "1.0.0",
+  "description": "Server for the cat-pwa",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IagoLast/cat-pwa.git"
+  },
+  "author": "@iagolast",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IagoLast/cat-pwa/issues"
+  },
+  "homepage": "https://github.com/IagoLast/cat-pwa#readme",
+  "dependencies": {
+    "eslint": "^5.6.0",
+    "express": "^4.16.3"
+  }
+}
