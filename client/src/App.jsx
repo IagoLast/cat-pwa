@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { timingSafeEqual } from 'crypto';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -17,15 +18,15 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <section className="gallery">
         {this.state.pictures.map(this.renderPicture)}
-      </React.Fragment>
+      </section>
     );
   }
 
 
   renderPicture(data) {
-    return <img src={data.url_l} alt={data.title} title={data.title} />
+    return <img className="pic" src={data.url_l} alt={data.title} title={data.title} />
   }
 }
 
