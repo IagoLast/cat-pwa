@@ -4,7 +4,7 @@ const {
 } = require('../../config/dev.json');
 
 // https://www.flickr.com/services/api/flickr.photos.search.html#yui_3_11_0_1_1537461393936_336
-const extras = 'description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_m, url_l';
+const extras = 'description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_s, url_m, url_l';
 
 
 async function getPictures(tags = 'cats, kitten') {

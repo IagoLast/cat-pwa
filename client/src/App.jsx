@@ -26,7 +26,10 @@ class App extends Component {
 
 
   renderPicture(data) {
-    return <img className="pic" src={data.url_l} alt={data.title} title={data.title} />
+    return <figure class="pic">
+      <img className="pic__img" src={data.url_s} alt={data.title} title={data.title} />
+      <figcaption className="pic__caption">{data.title} by {data.ownername}</figcaption>
+    </figure>
   }
 }
 
