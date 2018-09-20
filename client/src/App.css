@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   justify-content: center;
   will-change: flex;
+  height: 100%;
 }
 
 .pic {

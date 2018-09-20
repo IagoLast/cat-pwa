@@ -24,6 +24,32 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate() {
+    const images = document.querySelectorAll('img');
+    const config = {
+      rootMargin: '50px 0px',
+      threshold: 0.01
+    }
+
+    // The observer for the images on the page
+    let observer = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+        // Are we in viewport?
+        if (entry.intersectionRatio > 0) {
+
+          // Stop watching and load the image
+          observer.unobserve(entry.target);
+          entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
+          console.log(entry);
+        }
+      });
+    }, config);
+    images.forEach(image => {
+      observer.observe(image);
+    });
+  }
+
   fetchPictures() {
     if (this.state.fetching) {
       return;
@@ -49,7 +75,7 @@ class App extends Component {
 
   renderPicture(data, index) {
     return <figure onClick={() => this.onImageClick(index)} key={index} className={this.state.active === index ? 'pic active' : 'pic'} >
-      <img className="pic__img" src={this.state.active === index ? data.url_l : data.url_s} alt={data.title} title={data.title} />
+      <img width={data.width_s} height={data.height_s} className="pic__img" data-src={this.state.active === index ? data.url_l : data.url_s} alt={data.title} title={data.title} />
       <figcaption className="pic__caption">
         {this.renderCaption(index, data)}
       </figcaption>
