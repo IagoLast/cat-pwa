@@ -5,9 +5,9 @@ const chai = require('chai');
 const {
   expect
 } = chai;
-const api = require('../lib/api/index');
+const api = require('../lib/flickr/index');
 
-describe('api', () => {
+describe('flickr', () => {
   describe('getPictures', () => {
     let pictures;
     before(async () => {
