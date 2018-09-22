@@ -12,6 +12,12 @@
   transition: all .3s;
   vertical-align: middle;
   background: #fff;
+  opacity: 0;
+}
+
+.fig.hydrated {
+  animation: fadeIn 2s;
+  animation-fill-mode: forwards;
 }
 
 .fig__img {

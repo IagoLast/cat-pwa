@@ -13,6 +13,7 @@ export default class ImageObserver {
       if (entry.intersectionRatio > 0) {
         this._intersectionObserver.unobserve(entry.target);
         entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
+        entry.target.parentNode.classList.add('hydrated');
       }
     });
   }
