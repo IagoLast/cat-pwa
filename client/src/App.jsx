@@ -17,8 +17,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 0.8 * document.body.scrollHeight) {
+    const gallery = document.querySelector('.gallery');
+    gallery.addEventListener('scroll', () => {
+      if (gallery.scrollTop > 0.8 * gallery.scrollHeight) {
         this.fetchPictures();
       }
     });
@@ -41,7 +42,6 @@ class App extends Component {
           // Stop watching and load the image
           observer.unobserve(entry.target);
           entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
-          console.log(entry);
         }
       });
     }, config);
@@ -66,32 +66,36 @@ class App extends Component {
   render() {
     return (
       <section className="gallery">
-        {this.state.pictures.map(this.renderPicture.bind(this))}
+        {this.state.pictures.map(this.renderFigure.bind(this))}
         {this.state.fetching ? 'Loading...' : ''}
       </section>
     );
   }
 
 
-  renderPicture(data, index) {
+  renderFigure(data, index) {
     return <figure onClick={() => this.onImageClick(index)} key={index} className={this.state.active === index ? 'pic active' : 'pic'} >
-      <img width={data.width_s} height={data.height_s} className="pic__img" data-src={this.state.active === index ? data.url_l : data.url_s} alt={data.title} title={data.title} />
-      <figcaption className="pic__caption">
-        {this.renderCaption(index, data)}
-      </figcaption>
+      {this.renderImg(index, data)}
+      {this.renderCaption(index, data)}
     </figure>
+  }
+
+  renderImg(index, data) {
+    return <img width={data.width_s} height={data.height_s} className="pic__img" data-src={this.state.active === index ? data.url_l : data.url_s} alt={data.title} title={data.title} />
   }
 
   renderCaption(index, data) {
     if (this.state.active !== index) {
-      return `${data.title} by ${data.ownername}`;
+      return <figcaption className="pic__caption">
+        `${data.title} by ${data.ownername}`;
+      </figcaption>
     }
-    return <React.Fragment>
+    return <figcaption className="pic__caption">
       <h1> {data.title} </h1>
       <h3>{data.ownername}</h3>
       <p>Date: {data.datetaken}</p>
       <pre>{data.tags}</pre>
-    </React.Fragment>
+    </figcaption>
   }
 
   onImageClick(index) {
