@@ -45,9 +45,7 @@ class App extends Component {
         }
       });
     }, config);
-    images.forEach(image => {
-      observer.observe(image);
-    });
+    images.forEach(image => observer.observe(image));
   }
 
   fetchPictures() {
@@ -87,7 +85,7 @@ class App extends Component {
   renderCaption(index, data) {
     if (this.state.active !== index) {
       return <figcaption className="pic__caption">
-        `${data.title} by ${data.ownername}`;
+        {data.title} by {data.ownername}
       </figcaption>
     }
     return <figcaption className="pic__caption">
