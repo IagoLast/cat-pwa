@@ -14,6 +14,7 @@ body {
   background: #E0EAFC;
   background: linear-gradient(to right, #CFDEF3, #E0EAFC);
   font-family: 'Montserrat', sans-serif;
+  font-display: auto;
 }
 
 * {
