@@ -55,7 +55,7 @@ class App extends Component {
   }
 
   renderLoading() {
-    return this.state.fetching ? 'Loading...' : '';
+    return this.state.fetching ? <div class="loader">Loading...</div> : '';
   }
 
   renderLightbox() {
