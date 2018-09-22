@@ -1,29 +1,24 @@
 .gallery {
+  overflow: auto;
   max-width: 1200px;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  will-change: flex;
   height: 100%;
+  text-align: center;
 }
 
 .pic {
-  overflow: hidden;
   position: relative;
-  /* border: 1px solid red; */
+  display: inline-block;
+  overflow: hidden;
+  min-width: 200px;
   max-width: 400px;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   box-shadow: 0px 1px 1px 0px rgba(78, 78, 78, 0.6);
   padding: 12px;
   margin: 8px;
   border-radius: 2px;
   cursor: pointer;
   transition: all .3s;
+  vertical-align: middle;
 }
 
 .pic__img {
@@ -68,6 +63,10 @@
   margin: auto;
 }
 
+.pic.active .pic__img {
+  height: auto;
+}
+
 .pic.active .pic__caption {
   opacity: 1;
   top: 50%;
@@ -76,10 +75,6 @@
 
 
 @media (min-width: 550px) {
-  .gallery {
-    justify-content: space-between;
-  }
-
   .pic {
     max-width: 500px;
   }

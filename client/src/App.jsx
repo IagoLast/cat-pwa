@@ -27,7 +27,7 @@ class App extends Component {
   componentDidUpdate() {
     const images = document.querySelectorAll('img');
     const config = {
-      rootMargin: '50px 0px',
+      rootMargin: '0px 300px',
       threshold: 0.01
     }
 
