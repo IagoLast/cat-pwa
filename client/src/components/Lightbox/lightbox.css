@@ -1,0 +1,45 @@
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 38px;
+  background: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 1s;
+  animation-fill-mode: forwards;
+}
+
+.lightbox__figure {
+  position: relative;
+  background: white;
+  margin: auto;
+  height: 100%;
+  max-width: 400px;
+  overflow: auto;
+  border-radius: 2px;
+}
+
+.lightbox__img {
+  width: 100%;
+  height: auto;
+  background: #f2f2f2;
+}
+
+.lightbox__caption {
+}
+
+.lightbox__caption:hover {
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

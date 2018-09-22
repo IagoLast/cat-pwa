@@ -11,6 +11,7 @@
   cursor: pointer;
   transition: all .3s;
   vertical-align: middle;
+  background: #fff;
 }
 
 .fig__img {
@@ -24,47 +25,18 @@
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 8px;
+  background: rgba(255, 255, 255, .95);
   text-align: center;
   opacity: 0;
-  background: rgba(255, 255, 255, .95);
   transition: opacity .6s, top .4s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   font-weight: 100;
-  padding: 8px;
 }
 
 .fig:hover .fig__caption {
   opacity: 1;
   top: 0;
 }
-
-.fig.active {
-  cursor: pointer;
-  position: fixed;
-  background: white;
-  display: block;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  width: 100%;
-  padding: 50px;
-  margin: auto;
-}
-
-.fig.active .fig__img {
-  height: auto;
-}
-
-.fig.active .fig__caption {
-  opacity: 1;
-  top: 50%;
-  background: rgba(255, 255, 255, .8);
-}
-
 
 @media (min-width: 550px) {
   .fig {

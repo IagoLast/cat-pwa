@@ -3,6 +3,7 @@ import apiClient from './services/api-client';
 import ImageObserver from './services/ImageObserver';
 import './App.css';
 import Figure from './components/Figure/Figure';
+import Lightbox from './components/Lightbox/Lightbox';
 
 class App extends Component {
   constructor(props) {
@@ -43,13 +44,24 @@ class App extends Component {
     return (
       <section ref={this._galleryElement} className="gallery">
         {this.state.pictures.map(this.renderFigure.bind(this))}
-        {this.state.fetching ? 'Loading...' : ''}
+        {this.renderLoading()}
+        {this.renderLightbox()}
       </section>
     );
   }
 
   renderFigure(data, index) {
-    return <Figure handleClick={this.onFigureClick.bind(this)} index={index} key={index} data={data} active={this.state.active === index}></Figure>
+    return <Figure handleClick={this.onFigureClick.bind(this)} index={index} key={index} data={data}></Figure>
+  }
+
+  renderLoading() {
+    return this.state.fetching ? 'Loading...' : '';
+  }
+
+  renderLightbox() {
+    if (this.state.active >= 0) {
+      return <Lightbox handleClick={() => this.setState({ active: -1 })} data={this.state.pictures[this.state.active]}></Lightbox>;
+    }
   }
 
   onFigureClick(index) {
