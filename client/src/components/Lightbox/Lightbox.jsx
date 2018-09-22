@@ -11,12 +11,12 @@ export default class Lightbox extends Component {
           data-src={this.props.data.url_l}
           alt={this.props.data.title}
           title={this.props.data.title} />
-        <div className="lightbox__caption">
-          <h1> {this.props.data.title} </h1>
-          <h3>{this.props.data.ownername}</h3>
-          <p>Date: {this.props.data.datetaken}</p>
-          <p>{this.props.data.tags}</p>
-        </div>
+        <figcaption className="lightbox__caption">
+          <p className="date">{this.props.data.datetaken}</p>
+          <h1 className="title"> {this.props.data.title ||'Picture'} </h1>
+          <h3 className="owner"> @{this.props.data.ownername}</h3>
+          <p className="tags">{this.props.data.tags}</p>
+        </figcaption>
       </figure>
     </div>
   }

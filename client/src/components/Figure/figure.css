@@ -25,12 +25,27 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 8px;
   background: rgba(255, 255, 255, .95);
   text-align: center;
   opacity: 0;
   transition: opacity .6s, top .4s;
   font-weight: 100;
+}
+
+.fig__caption div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  text-align: center;
+}
+
+.fig__caption .title {
+  color: #8B1E3F;
+}
+
+.fig__caption .owner {
+  color: #508991;
 }
 
 .fig:hover .fig__caption {

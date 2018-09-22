@@ -9,6 +9,7 @@
   background: rgba(0, 0, 0, 0.7);
   animation: fadeIn 1s;
   animation-fill-mode: forwards;
+  cursor: pointer;
 }
 
 .lightbox__figure {
@@ -16,7 +17,6 @@
   background: white;
   margin: auto;
   height: 100%;
-  max-width: 400px;
   overflow: auto;
   border-radius: 2px;
 }
@@ -28,11 +28,30 @@
 }
 
 .lightbox__caption {
+  padding: 16px;
+  text-align: left;
 }
 
-.lightbox__caption:hover {
+.date {
+  font-weight: 300;
+  color: rgba(0, 0, 0, .54);
+  font-size: 15px;
 }
 
+.lightbox__caption .title {
+  color: #8B1E3F;
+}
+
+.lightbox__caption .owner {
+  color: #508991;
+}
+
+
+.tags {
+  font-family: monospace;
+  color: rgba(0, 0, 0, .54);
+  font-size: 12px;
+}
 
 @keyframes fadeIn {
   from {
@@ -41,5 +60,12 @@
 
   to {
     opacity: 1;
+  }
+}
+
+
+@media (min-width: 550px) {
+  .lightbox__figure {
+    max-width: 600px;
   }
 }

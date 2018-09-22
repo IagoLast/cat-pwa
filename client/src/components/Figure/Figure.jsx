@@ -20,7 +20,15 @@ export default class Figure extends Component {
 
   renderCaption() {
     return <figcaption className="fig__caption">
-      {this.props.data.title} by {this.props.data.ownername}
+      <div>
+        <h3 className="title">
+          {this.props.data.title || 'Picture'}
+        </h3>
+        <p>by</p>
+        <p className="owner">
+          @{this.props.data.ownername}
+        </p>
+      </div>
     </figcaption>
   }
 }
