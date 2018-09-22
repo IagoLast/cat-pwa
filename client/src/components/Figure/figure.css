@@ -1,13 +1,4 @@
-.gallery {
-  overflow: auto;
-  max-width: 1200px;
-  margin: auto;
-  height: 100%;
-  text-align: center;
-  transition: all .5s;
-}
-
-.pic {
+.fig {
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -22,12 +13,12 @@
   vertical-align: middle;
 }
 
-.pic__img {
+.fig__img {
   display: block;
   width: 100%;
 }
 
-.pic__caption {
+.fig__caption {
   position: absolute;
   top: -100%;
   bottom: 0;
@@ -44,12 +35,12 @@
   padding: 8px;
 }
 
-.pic:hover .pic__caption {
+.fig:hover .fig__caption {
   opacity: 1;
   top: 0;
 }
 
-.pic.active {
+.fig.active {
   cursor: pointer;
   position: fixed;
   background: white;
@@ -64,11 +55,11 @@
   margin: auto;
 }
 
-.pic.active .pic__img {
+.fig.active .fig__img {
   height: auto;
 }
 
-.pic.active .pic__caption {
+.fig.active .fig__caption {
   opacity: 1;
   top: 50%;
   background: rgba(255, 255, 255, .8);
@@ -76,7 +67,7 @@
 
 
 @media (min-width: 550px) {
-  .pic {
+  .fig {
     max-width: 500px;
   }
 }
