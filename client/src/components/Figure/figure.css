@@ -48,6 +48,10 @@
 
 .fig__caption .title {
   color: #8B1E3F;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 1.17em;
 }
 
 .fig__caption .owner {
