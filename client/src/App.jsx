@@ -43,7 +43,7 @@ class App extends Component {
    */
   observeScroll() {
     this._galleryElement.current.addEventListener('scroll', () => {
-      if (!this.state.fetching && this._galleryElement.current.scrollTop > (SCROLL_PERCENTAGE_FETCH * this._galleryElement.current.scrollHeigh)) {
+      if (!this.state.fetching && this._galleryElement.current.scrollTop > (SCROLL_PERCENTAGE_FETCH * this._galleryElement.current.scrollHeight)) {
         this.fetchPictures();
       }
     });
@@ -66,10 +66,13 @@ class App extends Component {
   }
 
   onPicturesFetchError() {
-    this.setState({ fetching: false });
+    this.setState({ fetching: false, error: true });
   }
 
   render() {
+    if (this.state.error) {
+      return this.renderError();
+    }
     return (
       <section ref={this._galleryElement} className="gallery">
         {this.state.pictures.map(this.renderFigure.bind(this))}
@@ -91,6 +94,13 @@ class App extends Component {
     if (this.state.active >= 0) {
       return <Lightbox handleClick={() => this.setState({ active: -1 })} data={this.state.pictures[this.state.active]}></Lightbox>;
     }
+  }
+
+  renderError() {
+    return (
+      <section ref={this._galleryElement} className="gallery">
+        <h1>Some error happened, try again later :(</h1>
+      </section>)
   }
 
   /**
