@@ -1,5 +1,7 @@
+const SERVER_URL = 'http://localhost:3000/api/v1/pics/';
+
 export async function getPictures(page) {
-  return fetch(`http://localhost:3000/api/v1/pics/${page}`).then(raw => raw.json());
+  return fetch(`${SERVER_URL}${page}`).then(raw => raw.json());
 }
 
 

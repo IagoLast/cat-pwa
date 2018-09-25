@@ -5,12 +5,20 @@ import './App.css';
 import Figure from './components/Figure/Figure';
 import Lightbox from './components/Lightbox/Lightbox';
 
+const SCROLL_PERCENTAGE_FETCH = 0.8;
+
 class App extends Component {
   constructor(props) {
     super(props);
     this._imageObserver = new ImageObserver();
     this._galleryElement = React.createRef();
-    this.state = { pictures: [], fetching: false, page: 1 };
+    /**
+     * pictures: Array with the pic info from the api.
+     * fetching: Boolean flag to know the app status.
+     * page: Pagination info.
+     * active: Used to show the lightbox when the user clicks in some picture.
+     */
+    this.state = { pictures: [], fetching: false, page: 1, active: -1 };
   }
 
   componentWillMount() {
@@ -18,24 +26,44 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.observeScroll();
+  }
+
+  componentDidUpdate() {
+    this.observeImages();
+  }
+
+  /**
+   * Use the ImageObserver to lazy-load images
+   */
+  observeImages() {
+    const images = this._galleryElement.current.querySelectorAll('img[data-src]');
+    this._imageObserver.addImages(images);
+  }
+
+  /**
+   * Setup an scroll listener to fetch new pictures when the user scrolls the page
+   */
+  observeScroll() {
     this._galleryElement.current.addEventListener('scroll', () => {
-      if (this._galleryElement.current.scrollTop > 0.8 * this._galleryElement.current.scrollHeight && !this.state.fetching) {
+      if (!this.state.fetching && this._galleryElement.current.scrollTop > (SCROLL_PERCENTAGE_FETCH * this._galleryElement.current.scrollHeigh)) {
         this.fetchPictures();
       }
     });
   }
 
-  componentDidUpdate() {
-    const images = document.querySelectorAll('img[data-src]');
-    this._imageObserver.addImages(images);
-  }
-
+  /**
+   * Use the ApiClient to get new pictures from the API
+   */
   fetchPictures() {
     this.setState({ fetching: true });
-    apiClient.getPictures(this.state.page).then(this._onPicturesFetched.bind(this));
+    apiClient.getPictures(this.state.page).then(this.onPicturesFetched.bind(this));
   }
 
-  _onPicturesFetched(pictures) {
+  /**
+   * Update the state with the new picures, pagination and fetching status
+   */
+  onPicturesFetched(pictures) {
     const newArray = this.state.pictures.concat(pictures);
     this.setState({ pictures: newArray, fetching: false, page: this.state.page + 1 });
   }
@@ -64,6 +92,10 @@ class App extends Component {
     }
   }
 
+  /**
+   * When a figure is clicked its index will be stored in the state as the "active figure".
+   * If the "Active figure" was clicked set to -1 (no active figure).
+   */
   onFigureClick(index) {
     if (this.state.active === index) {
       return this.setState({ active: -1 });
