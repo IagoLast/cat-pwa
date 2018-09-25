@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="lightbox"
+  onClick={[Function]}
+>
+  <div
+    className="lightbox__figure"
+  >
+    <div
+      className="lightbox__img"
+      style={
+        Object {
+          "backgroundImage": "url(\\"fake-url\\")",
+        }
+      }
+    />
+  </div>
+  <div
+    className="lightbox__caption"
+  >
+    <p
+      className="date"
+    >
+      fake-date-taken
+    </p>
+    <h1
+      className="title"
+    >
+       
+      fake-title
+       
+    </h1>
+    <h3
+      className="owner"
+    >
+       @
+      fake-tags_0, fake-tags_1
+    </h3>
+    <p
+      className="tags"
+    />
+  </div>
+</div>
+`;

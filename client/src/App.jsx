@@ -21,11 +21,8 @@ class App extends Component {
     this.state = { pictures: [], fetching: false, page: 1, active: -1 };
   }
 
-  componentWillMount() {
-    this.fetchPictures();
-  }
-
   componentDidMount() {
+    this.fetchPictures();
     this.observeScroll();
   }
 
@@ -57,7 +54,7 @@ class App extends Component {
    */
   fetchPictures() {
     this.setState({ fetching: true });
-    apiClient.getPictures(this.state.page).then(this.onPicturesFetched.bind(this));
+    apiClient.getPictures(this.state.page).then(this.onPicturesFetched.bind(this)).catch(this.onPicturesFetchError.bind(this))
   }
 
   /**
@@ -66,6 +63,10 @@ class App extends Component {
   onPicturesFetched(pictures) {
     const newArray = this.state.pictures.concat(pictures);
     this.setState({ pictures: newArray, fetching: false, page: this.state.page + 1 });
+  }
+
+  onPicturesFetchError() {
+    this.setState({ fetching: false });
   }
 
   render() {

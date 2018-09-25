@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<figure
+  className="fig"
+  onClick={[Function]}
+>
+  <img
+    alt="fake-title"
+    className="fig__img"
+    data-src="fake-url"
+    height="300px"
+    title="fake-title"
+    width="300px"
+  />
+  <figcaption
+    className="fig__caption"
+  >
+    <div>
+      <h3
+        className="title"
+      >
+        fake-title
+      </h3>
+      <p>
+        by
+      </p>
+      <p
+        className="owner"
+      >
+        @
+        fake-ownername
+      </p>
+    </div>
+  </figcaption>
+</figure>
+`;

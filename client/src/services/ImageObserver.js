@@ -28,6 +28,10 @@ export default class ImageObserver {
     });
   }
 
+  _onEntry(entry) {
+
+  }
+
   addImages(images) {
     images.forEach(image => this._intersectionObserver.observe(image));
   }
