@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const NodeCache = require('node-cache');
 const flickr = require('./lib/flickr/index');
-
+const PORT = 3333;
 
 const app = express();
 app.use(cors());
@@ -27,6 +27,6 @@ app.get('/api/v1/pics/:page', async (req, res) => {
 });
 
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(PORT, function () {
+  console.log(`Server listening on port ${PORT}`);
 });
