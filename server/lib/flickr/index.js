@@ -3,12 +3,14 @@ const {
   api_key
 } = require('../../config/dev.json');
 
+const PER_PAGE = 20;
+
 // https://www.flickr.com/services/api/flickr.photos.search.html#yui_3_11_0_1_1537461393936_336
 const extras = 'description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_s, url_m, url_l';
 
 
 async function getPictures(tags = 'cats, kitten', page = 0) {
-  const rawResponse = await fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api_key}&tags=${tags}&page=${page}&extras=${extras}&format=json&nojsoncallback=1`);
+  const rawResponse = await fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api_key}&tags=${tags}&page=${page}&per_page=${PER_PAGE}&extras=${extras}&format=json&nojsoncallback=1`);
   const response = await rawResponse.json();
   return response.photos.photo;
 }
