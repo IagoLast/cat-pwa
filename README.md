@@ -3,9 +3,11 @@
 A demo PWA using React and Nodejs.
 
 
-## Getting started
+## Getting started
 
-### Configure the server
+This repo contains both client and server.
+
+### Configuring the server
 
 In order to fetch the images, the server requires a Flickr API key. Request one [from this link](https://www.flickr.com/services/apps/create/noncommercial/?) and create a `dev.json` file in the `server/config` folder with two fields, `api_key` and `app_secret`. This file is ignored by git to prevent leaking credentials.
 
